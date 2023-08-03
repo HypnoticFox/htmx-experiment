@@ -1,0 +1,26 @@
+
+.htmx-swapping .fade-me-out {
+    opacity: 0;
+    transition: opacity 200ms ease-out;
+}
+
+.htmx-added .fade-me-in {
+    opacity: 0;
+}
+.fade-me-in {
+    opacity: 1;
+    transition: opacity 200ms ease-out;
+}
+
+.bi {
+    width:1em;
+    height:1em;
+    vertical-align: -.125em;
+    fill: currentcolor
+}
+
+.bi-lg {
+    width:1.5em !important;
+    height:1.5em !important;
+    vertical-align: -.1875em !important;
+}
