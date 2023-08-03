@@ -14,7 +14,7 @@ if not User.objects.filter(is_superuser=True).exists():
     User.objects.create_superuser('admin', 'admin@example.com', 'admin');
 "
 
-if [ "$PROJECT_ENVIRONMENT" == "prod" ]
+if [ "$PROJECT_ENVIRONMENT" = "prod" ]
 then
     echo "prestart.sh: (PRODUCTION_MODE) Starting staticfiles collecting"
     python manage.py collectstatic --no-input
