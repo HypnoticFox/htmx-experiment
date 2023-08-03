@@ -3,6 +3,9 @@
 echo "prestart.sh: Starting database migrations"
 python manage.py migrate --no-input
 
+echo "prestart.sh: Creating caching table if needed"
+python manage.py createcachetable
+
 echo "prestart.sh: Creating superuser if needed"
 python manage.py shell -c "
 from django.contrib.auth import get_user_model; 

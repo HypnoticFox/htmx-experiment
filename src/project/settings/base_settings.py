@@ -63,6 +63,7 @@ MIDDLEWARE = [
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
     'django_htmx.middleware.HtmxMiddleware',
+    'project.middleware.IdempotencyMiddleware',
     'project.middleware.HtmxHandlingMiddleware',
 ]
 
@@ -115,6 +116,15 @@ DATABASES = {
         "PORT": os.getenv("PROJECT_DATABASE_PORT"),
     }
 }
+
+CACHES = {
+    "default": {
+        "BACKEND": "django.core.cache.backends.db.DatabaseCache",
+        "LOCATION": "cache_table",
+    }
+}
+
+CACHE_IDEMPOTENCY_TIMEOUT = 10
 
 
 # Password validation
