@@ -41,7 +41,7 @@ INSTALLED_APPS = [
     'allauth',
     'allauth.account',
     'allauth.socialaccount',
-    'allauth.socialaccount.providers.keycloak',
+    'allauth.socialaccount.providers.openid_connect',
     'django_htmx',
     'debug_toolbar',
     'django.contrib.admin',
@@ -62,6 +62,7 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    'allauth.account.middleware.AccountMiddleware',
     'django_htmx.middleware.HtmxMiddleware',
     'project.middleware.IdempotencyMiddleware',
     'project.middleware.HtmxHandlingMiddleware',
@@ -124,7 +125,7 @@ CACHES = {
     }
 }
 
-CACHE_IDEMPOTENCY_TIMEOUT = 10
+CACHE_IDEMPOTENCY_TIMEOUT = 5
 
 
 # Password validation
@@ -154,15 +155,6 @@ AUTHENTICATION_BACKENDS = [
 ]
 
 SITE_ID = 1
-
-# Provider specific settings
-SOCIALACCOUNT_PROVIDERS = {
-    'keycloak': {
-        'KEYCLOAK_URL': os.getenv("KEYCLOAK_URL"),
-        'KEYCLOAK_URL_ALT': os.getenv("KEYCLOAK_URL_ALT"),
-        'KEYCLOAK_REALM': os.getenv("KEYCLOAK_REALML")
-    }
-}
 
 LOGIN_REDIRECT_URL = "/"
 

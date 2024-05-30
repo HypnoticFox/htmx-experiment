@@ -18,4 +18,11 @@ if [ "$PROJECT_ENVIRONMENT" = "prod" ]
 then
     echo "prestart.sh: (PRODUCTION_MODE) Starting staticfiles collecting"
     python manage.py collectstatic --no-input
+else
+    echo "prestart.sh: (DEVELOPMENT_MODE) Adding some seed data"
+    python manage.py shell -c "
+from django.contrib.auth.models import Group;
+if not Group.objects.filter(name='example').exists():
+    Group.objects.create(name='example');
+    "
 fi

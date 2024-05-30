@@ -3,7 +3,7 @@ import json
 import multiprocessing
 import os
 
-workers_per_core_str = os.getenv("WORKERS_PER_CORE", "1")
+workers_per_core_str = os.getenv("WORKERS_PER_CORE", "2")
 max_workers_str = os.getenv("MAX_WORKERS")
 use_max_workers = None
 if max_workers_str:
@@ -21,7 +21,7 @@ else:
 
 cores = multiprocessing.cpu_count()
 workers_per_core = float(workers_per_core_str)
-default_web_concurrency = workers_per_core * cores
+default_web_concurrency = workers_per_core * cores + 1
 if web_concurrency_str:
     web_concurrency = int(web_concurrency_str)
     assert web_concurrency > 0

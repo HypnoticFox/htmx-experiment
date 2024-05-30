@@ -44,7 +44,7 @@
     {% endif %}
 </head>
 
-<body hx-headers='{"X-CSRFToken": "{{ csrf_token }}"}' hx-boost="true" hx-swap="innerHTML swap:200ms">
+<body hx-headers='{"X-CSRFToken": "{{ csrf_token }}"}' hx-boost="true" hx-target="main" hx-swap="innerHTML swap:200ms">
     <div id="main-navbar-container" class="container-fluid bg-body-tertiary" hx-preserve>
         <div class="row container-fluid">
             <div class="col-lg-2"></div>
@@ -103,8 +103,8 @@
         </div>
     </div>
 
-    <div id="main" class="fade-me-out fade-me-in">
+    <main id="main" class="fade-me-out fade-me-in">
         {% block main %}{% endblock main %}
-    </div>
+    </main>
 </body>
 </html>

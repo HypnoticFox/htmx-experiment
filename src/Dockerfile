@@ -1,11 +1,11 @@
 # uvicorn-gunicorn-docker Copyright (c) 2019 Sebastián Ramírez
 # Modified version of https://github.com/tiangolo/uvicorn-gunicorn-docker/blob/master/docker-images/python3.11.dockerfile
 
-FROM python:3.11
+FROM python:3.12
 
 COPY ./requirements.txt /tmp/requirements.txt
 
-RUN pip install --no-cache-dir --upgrade -r /tmp/requirements.txt
+RUN pip install --no-cache-dir -r /tmp/requirements.txt
 
 COPY . /app
 
